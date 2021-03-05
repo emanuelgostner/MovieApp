@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="movie_title">"The Queen's Gambit"</string>
+    <string name="genres">"Drama, Sport"</string>
+    <string name="creator_lbl">Creators:</string>
+    <string name="actors_lbl">Actors:</string>
+    <string name="creators_content">"Scott Frank, Alan Scott"</string>
+    <string name="actors_content">"Anya Taylor-Joy, Chloe Pirrie"</string>
+    <string name="description_title">Story</string>
+</resources>
