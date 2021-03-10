@@ -1,23 +1,28 @@
 package com.example.movieapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import android.widget.TextView.BufferType
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.example.movieapp.databinding.ActivityMainBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+@BindingAdapter("android:text")
+fun setText(view: TextView, list: MutableList<String>) {
+    println("test")
+    view.text = list.joinToString(", ")
+}
 
 class MainActivity : AppCompatActivity() {
+    var movie = Movie();
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
 
-        lateinit var binding: ActivityMainBinding
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        //views
-        //val fabButton: FloatingActionButton = findViewById(R.id.fabButton)
+        val binding : ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         //bind click Handler
         binding.fabButton.setOnClickListener {
@@ -25,13 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //bind object instance to layout
-        val movie = Movie();
-        binding.txtTitle.text = movie.title
-        binding.txtGenreLbl.text = movie.genres
-        binding.ratingBar.rating = movie.rating
-        binding.txtCreatorsContent.text = movie.creators
-        binding.txtActorsContent.text = movie.actors
-        binding.txtDescriptionContent.setText(movie.description)
+        binding.movie = movie;
 
     }
 
