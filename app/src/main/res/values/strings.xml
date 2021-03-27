@@ -7,4 +7,6 @@
     <string name="creators_content">"Scott Frank, Alan Scott"</string>
     <string name="actors_content">"Anya Taylor-Joy, Chloe Pirrie"</string>
     <string name="description_title">Story</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -12,12 +12,11 @@ import com.example.movieapp.databinding.ActivityMainBinding
 
 @BindingAdapter("android:text")
 fun setText(view: TextView, list: MutableList<String>) {
-    println("test")
     view.text = list.joinToString(", ")
 }
 
 class MainActivity : AppCompatActivity() {
-    var movie = Movie();
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //bind object instance to layout
-        binding.movie = movie;
+        binding.movie = Movie();
 
     }
 
