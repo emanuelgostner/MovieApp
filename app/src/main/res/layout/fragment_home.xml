@@ -6,82 +6,170 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     <variable name="movie" type="com.example.movieapp.Movie"/>
 </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".HomeFragment">
+        android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/home_title"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="24sp" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cardView"
+        <ScrollView
+            android:id="@+id/scrollView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="#31FFFFFF"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:layout_editor_absoluteX="162dp">
+            android:layout_height="match_parent"
+            android:layout_marginTop="42dp">
 
-            <TextView
-                android:id="@+id/itemTitle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="The Queens Gambit"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/itemCreators1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Scott Frank, Alan Scott"
-                android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="@+id/itemTitle1"
-                app:layout_constraintTop_toBottomOf="@+id/itemTitle1" />
 
-            <TextView
-                android:id="@+id/itemActors1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Anya Taylor-Joy, Chloe Pirrie"
-                android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="@+id/itemCreators1"
-                app:layout_constraintTop_toBottomOf="@+id/itemCreators1" />
 
-            <Button
-                android:id="@+id/itemButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="See Detail"
-                app:backgroundTint="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/itemActors1" />
+                <LinearLayout
+                    android:id="@+id/cardView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#31FFFFFF"
+                    android:orientation="vertical">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/itemTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="The Queens Gambit"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/itemCreators1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scott Frank, Alan Scott"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/itemActors1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anya Taylor-Joy, Chloe Pirrie"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/itemButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="See Detail" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/cardView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8pt"
+                    android:background="#31FFFFFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/itemTitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Test movie 2"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/itemCreators2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scott Frank, Alan Scott"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/itemActors2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anya Taylor-Joy, Chloe Pirrie"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/itemButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="See Detail" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/cardView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8pt"
+                    android:background="#31FFFFFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/itemTitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Test movie 3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/itemCreators3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scott Frank, Alan Scott"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/itemActors3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anya Taylor-Joy, Chloe Pirrie"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/itemButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="See Detail" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+
+
+    </LinearLayout>
 
 </layout>

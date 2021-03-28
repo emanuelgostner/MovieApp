@@ -25,13 +25,27 @@ class HomeFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false)
 
+        //bind static movieItems
         binding.itemButton1.setOnClickListener { view : View ->
             val movie = Movie()
-
-            val bundle = bundleOf("movie" to "test")
-            val bundle2 = Bundle()
-            bundle2.putSerializable("movie", movie)
-            view.findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle2)
+            movie.title = "The Queens Gambit"
+            val movieBundle = Bundle()
+            movieBundle.putSerializable("movie", movie)
+            view.findNavController().navigate(R.id.action_homeFragment_to_detailFragment, movieBundle)
+        }
+        binding.itemButton2.setOnClickListener { view : View ->
+            val movie = Movie()
+            movie.title = "Test movie 2"
+            val movieBundle = Bundle()
+            movieBundle.putSerializable("movie", movie)
+            view.findNavController().navigate(R.id.action_homeFragment_to_detailFragment, movieBundle)
+        }
+        binding.itemButton3.setOnClickListener { view : View ->
+            val movie = Movie()
+            movie.title = "Test movie 3"
+            val movieBundle = Bundle()
+            movieBundle.putSerializable("movie", movie)
+            view.findNavController().navigate(R.id.action_homeFragment_to_detailFragment, movieBundle)
         }
 
         setHasOptionsMenu(true)
