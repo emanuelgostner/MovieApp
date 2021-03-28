@@ -10,28 +10,77 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         tools:context=".HomeFragment">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/home_title"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            android:layout_marginTop="8dp"
+            android:background="#31FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:layout_editor_absoluteX="162dp">
+
+            <TextView
+                android:id="@+id/itemTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="The Queens Gambit"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/itemCreators1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Scott Frank, Alan Scott"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/itemTitle1"
+                app:layout_constraintTop_toBottomOf="@+id/itemTitle1" />
+
+            <TextView
+                android:id="@+id/itemActors1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Anya Taylor-Joy, Chloe Pirrie"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/itemCreators1"
+                app:layout_constraintTop_toBottomOf="@+id/itemCreators1" />
+
+            <Button
+                android:id="@+id/itemButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="See Detail"
+                app:backgroundTint="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemActors1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

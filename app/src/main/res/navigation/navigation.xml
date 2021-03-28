@@ -18,7 +18,11 @@
         android:id="@+id/detailFragment"
         android:name="com.example.movieapp.DetailFragment"
         android:label="Movie Details"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="movie"
+            app:argType="com.example.movieapp.Movie" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.movieapp.AboutFragment"

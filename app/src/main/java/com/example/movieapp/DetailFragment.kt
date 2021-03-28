@@ -16,12 +16,6 @@ import com.example.movieapp.databinding.FragmentHomeBinding
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-
-@BindingAdapter("android:text")
-fun setText(view: TextView, list: MutableList<String>) {
-    view.text = list.joinToString(", ")
-}
-
 /**
  * A simple [Fragment] subclass.
  * Use the [DetailFragment.newInstance] factory method to
@@ -39,9 +33,9 @@ class DetailFragment : Fragment() {
         binding.fabButton.setOnClickListener {
             clickHandlerFunction(it)
         }
-
-        //bind object instance to layout
-        binding.movie = Movie();
+        //get seriaziable from home fragment and bind to layout
+        val movie = arguments?.getSerializable("movie")
+        binding.movie = movie as Movie?
 
         return binding.root
     }
