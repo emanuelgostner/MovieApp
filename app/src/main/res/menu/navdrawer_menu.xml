@@ -6,4 +6,7 @@
         android:id="@+id/aboutFragment"
         android:icon="?attr/actionModeCopyDrawable"
         android:title="@string/about" />
+    <item
+        android:id="@+id/quizFragment"
+        android:title="@string/quiz" />
 </menu>

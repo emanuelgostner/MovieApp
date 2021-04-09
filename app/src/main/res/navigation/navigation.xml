@@ -28,4 +28,22 @@
         android:name="com.example.movieapp.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.movieapp.QuizFragment"
+        tools:layout="@layout/fragment_quiz"
+        android:label="QuizFragment" >
+        <action
+            android:id="@+id/action_quizFragment_to_quizEndFragment"
+            app:destination="@id/quizEndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizEndFragment"
+        android:name="com.example.movieapp.QuizEndFragment"
+        tools:layout="@layout/fragment_quiz_end"
+        android:label="QuizEndFragment" >
+        <action
+            android:id="@+id/action_quizEndFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
 </navigation>
