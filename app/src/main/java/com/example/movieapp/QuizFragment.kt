@@ -9,9 +9,11 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.movieapp.databinding.FragmentQuizBinding
+import com.example.movieapp.models.Question
 import com.example.movieapp.models.QuestionCatalogue
 
 
@@ -19,20 +21,27 @@ class QuizFragment : Fragment() {
 
     private lateinit var binding: FragmentQuizBinding
     private lateinit var viewModel: QuizViewModel
-    /* MOVED TO VIEWMODEL TO SAVE DATA
-    private val questions = QuestionCatalogue().defaultQuestions    // get a list of questions for the game
-    private var score = 0                                           // save the user's score
-    private var index = 0                                           // index for question data to show
-    */
+    private var questions : MutableList<Question> = arrayListOf()
+    private var score = 0
+    private var index = 0
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_quiz, container, false)
 
         Log.i("GameFragment", "QuizViewModel: Called ViewModelProvider.get")
         viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
+        questions = viewModel.questions.value!!
+        index = viewModel.index.value!!
+        score = viewModel.score.value!!
 
-        binding.index = viewModel.index
-        binding.questionsCount = viewModel.questions.size
-        binding.question = viewModel.questions[viewModel.index]
+        viewModel.questions.observe(viewLifecycleOwner, Observer { newQuestions ->
+            binding.question = newQuestions[index]
+            binding.questionsCount = newQuestions.size
+        })
+
+        viewModel.index.observe(viewLifecycleOwner, Observer { newIndex ->
+            binding.index = newIndex
+        })
 
         binding.btnNext.setOnClickListener { view : View ->
             nextQuestion(view)
@@ -43,7 +52,6 @@ class QuizFragment : Fragment() {
 
     private fun nextQuestion(v: View){
         var answer = binding.answerBox.checkedRadioButtonId
-        var selectedAnswer = ""
 
         //Toast message if no answer selected
         if(answer === -1) {
@@ -55,31 +63,31 @@ class QuizFragment : Fragment() {
         // check if is correct answer
         // update score
         if(answer === binding.answer1.id) {
-            if(viewModel.questions.get(viewModel.index).answers.get(0).isCorrectAnswer)
-                viewModel.score++
+            if(questions.get(index).answers.get(0).isCorrectAnswer)
+                score++
         }
         if(answer === binding.answer2.id) {
-            if(viewModel.questions.get(viewModel.index).answers.get(1).isCorrectAnswer)
-                viewModel.score++
+            if(questions.get(index).answers.get(1).isCorrectAnswer)
+                score++
         }
         if(answer === binding.answer3.id) {
-            if(viewModel.questions.get(viewModel.index).answers.get(2).isCorrectAnswer)
-                viewModel.score++
+            if(questions.get(index).answers.get(2).isCorrectAnswer)
+                score++
         }
         if(answer === binding.answer4.id) {
-            if(viewModel.questions.get(viewModel.index).answers.get(3).isCorrectAnswer)
-                viewModel.score++
+            if(questions.get(index).answers.get(3).isCorrectAnswer)
+                score++
         }
         // check if there are any viewModel.questions left
-        if(viewModel.questions.size-1 > viewModel.index) {
+        if(questions.size-1 > index) {
             // show next question OR
-            viewModel.index++
-            binding.index = viewModel.index
-            binding.question = viewModel.questions[viewModel.index]
+            index++
+            binding.index = index
+            binding.question = questions[index]
         }
         else {
             // navigate to QuizEndFragment
-            val scoreBundle = bundleOf("score" to viewModel.score, "maxScore" to viewModel.questions.size)
+            val scoreBundle = bundleOf("score" to score, "maxScore" to questions.size)
             v.findNavController().navigate(R.id.action_quizFragment_to_quizEndFragment, scoreBundle)
         }
 
