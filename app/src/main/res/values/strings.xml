@@ -11,9 +11,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_title">Welcome to MovieApp!</string>
     <string name="about">About</string>
+    <string name="retry">Retry</string>
     <string name="quiz">Quiz</string>
     <string name="next">Next</string>
     <string name="your_score">Your Score</string>
-    <string name="default_score">Default Score</string>
-    <string name="question_progress">Question Progress</string>
+    <string name="default_score">0/0</string>
+    <string name="question_progress">Question %d/%d</string>
 </resources>
