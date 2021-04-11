@@ -24,13 +24,11 @@ class QuizEndFragment : Fragment() {
         // get score from navigation arguments
         Log.i("GameFragment", "QuizViewModel: Called ViewModelProvider.get")
         viewModel = ViewModelProvider(this).get(QuizEndViewModel::class.java)
-        var score = viewModel.score.value
-        var maxScore = viewModel.maxScore.value
-        score = arguments?.getInt("score")!!
-        maxScore = arguments?.getInt("maxScore")!!
+        viewModel.score.value = arguments?.getInt("score")!!
+        viewModel.maxScore.value = arguments?.getInt("maxScore")!!
 
         // show score
-        binding.score.text = String.format("%d / %d", score, maxScore)
+        binding.score.text = String.format("%d / %d", viewModel.score.value, viewModel.maxScore.value)
 
         //button
         binding.retryButton.setOnClickListener { view : View ->

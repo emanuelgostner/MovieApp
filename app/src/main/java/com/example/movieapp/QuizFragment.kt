@@ -41,6 +41,7 @@ class QuizFragment : Fragment() {
 
         viewModel.index.observe(viewLifecycleOwner, Observer { newIndex ->
             binding.index = newIndex
+            binding.question = questions[newIndex]
         })
 
         binding.btnNext.setOnClickListener { view : View ->
@@ -64,30 +65,31 @@ class QuizFragment : Fragment() {
         // update score
         if(answer === binding.answer1.id) {
             if(questions.get(index).answers.get(0).isCorrectAnswer)
-                score++
+                viewModel.score.value = viewModel.score.value?.plus(1)
         }
         if(answer === binding.answer2.id) {
             if(questions.get(index).answers.get(1).isCorrectAnswer)
-                score++
+                viewModel.score.value =viewModel.score.value?.plus(1)
         }
         if(answer === binding.answer3.id) {
             if(questions.get(index).answers.get(2).isCorrectAnswer)
-                score++
+                viewModel.score.value = viewModel.score.value?.plus(1)
         }
         if(answer === binding.answer4.id) {
             if(questions.get(index).answers.get(3).isCorrectAnswer)
-                score++
+                viewModel.score.value = viewModel.score.value?.plus(1)
         }
         // check if there are any viewModel.questions left
         if(questions.size-1 > index) {
             // show next question OR
+            viewModel.index.value = viewModel.index.value?.plus(1)
             index++
-            binding.index = index
-            binding.question = questions[index]
+            //binding.index = index
+            //binding.question = questions[index]
         }
         else {
             // navigate to QuizEndFragment
-            val scoreBundle = bundleOf("score" to score, "maxScore" to questions.size)
+            val scoreBundle = bundleOf("score" to viewModel.score.value, "maxScore" to viewModel.questions.value?.size)
             v.findNavController().navigate(R.id.action_quizFragment_to_quizEndFragment, scoreBundle)
         }
 
